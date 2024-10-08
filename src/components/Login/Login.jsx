@@ -31,7 +31,7 @@ export default function Login() {
         localStorage.setItem("userToken", response.data.token);
         setUserLogin(response.data.token); // Update the user login state
         navigate("/"); // Navigate after updating state
-        window.location.reload();
+        window.location.reload(); 
       }
     } catch (error) {
       if (error.response) {
