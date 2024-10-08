@@ -68,7 +68,7 @@ export default function Login() {
   return (
     <>
       <Helmet>
-        <title>Login</title>
+        <title>Login uuuuu</title>
       </Helmet>
       <div className="max-w-xl mx-auto">
         <h2 className="text-3xl font-bold mb-6 green-color 2xl:mt-28">
