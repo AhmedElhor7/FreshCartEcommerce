@@ -1,0 +1,21 @@
+.notFoundContainer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9fafb;
+  }
+  
+  .notFoundContainer h1 {
+    font-size: 8rem;
+  }
+  
+  .notFoundContainer h2 {
+    font-size: 2rem;
+  }
+  
+  .notFoundContainer p {
+    font-size: 1.2rem;
+  }
+  
