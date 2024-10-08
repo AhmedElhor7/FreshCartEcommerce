@@ -1,20 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Style from './Register.module.css';
-import { Formik, useFormik } from 'formik';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
-import { userContext } from '../../Context/UserContext';
-import { Helmet } from 'react-helmet';
-
-
-
+import React, { useContext, useEffect, useState } from "react";
+import Style from "./Register.module.css";
+import { Formik, useFormik } from "formik";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import { userContext } from "../../Context/UserContext";
+import { Helmet } from "react-helmet";
 
 export default function Register() {
-
-          const { setUserLogin, userLogin } = useContext(userContext);
-
-
+  const { setUserLogin, userLogin } = useContext(userContext);
 
   const validateYup = Yup.object().shape({
     name: Yup.string()
@@ -28,11 +22,11 @@ export default function Register() {
       .trim() // Ensures no extra whitespace
       .matches(/^01[1250]\d{8}$/, "Must Add Egyptian Number")
       .required("Phone Is Required"),
-      password: Yup.string()
+    password: Yup.string()
       .matches(
-      /^(?=.*[A-Z])[A-Za-z0-9.@*]{6,11}$/,
+        /^(?=.*[A-Z])[A-Za-z0-9.@*]{6,11}$/,
         "Password must contain at least one uppercase letter and be between 6 to 11 characters long."
-      )    
+      )
       .required("Password Is Required"),
     rePassword: Yup.string()
       .oneOf([Yup.ref("password")], "Repassword Must Same Password")
@@ -41,66 +35,58 @@ export default function Register() {
 
   const navigate = useNavigate();
 
-    const [isLoading, setIsLoading] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('')
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   function handelRegister(formikValues) {
-
     setIsLoading(true);
 
-    // console.log(formikValues); 
+    // console.log(formikValues);
     const { data } = axios
       .post("https://ecommerce.routemisr.com/api/v1/auth/signup", formikValues)
       .then((response) => {
-        if (response.data.message === 'success') {
-                  // console.log(response);
+        if (response.data.message === "success") {
+          // console.log(response);
 
-                  // console.log(data);
-                  localStorage.setItem("userToken", response.data.token);
-                  setUserLogin(response.data.token);
+          // console.log(data);
+          localStorage.setItem("userToken", response.data.token);
+          setUserLogin(response.data.token);
 
-                  // console.log(userLogin);
+          // console.log(userLogin);
 
-                  setIsLoading(false);
-                  navigate("/");
+          setIsLoading(false);
+          navigate("/");
+          window.location.reload();
         }
-
       })
       .catch((error) => {
-        
         // console.log(error);
-        
+
         setErrorMessage(error.response.data.message);
-        
-        
+
         // console.log(data);
 
         setIsLoading(false);
       });
 
     // console.log(data);
-
   }
 
+  const Formik = useFormik({
+    initialValues: {
+      name: "",
+      phone: "",
+      email: "",
+      password: "",
+      rePassword: "",
+    },
+    validationSchema: validateYup,
+    onSubmit: handelRegister,
+  });
 
-  
-    const Formik = useFormik({ 
-      initialValues:{
-        name:'',
-        phone:'',
-        email:'',
-        password:'',
-        rePassword:''
-      },
-      validationSchema:validateYup,
-      onSubmit:handelRegister
-    })
-
-    useEffect(() => {
-      setUserLogin(null);
-    }, [userLogin])
-    
+  useEffect(() => {
+    setUserLogin(null);
+  }, [userLogin]);
 
   return (
     <>
