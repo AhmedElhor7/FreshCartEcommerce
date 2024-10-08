@@ -27,7 +27,7 @@ const Login = lazy(() => import("./components/Login/Login"));
 const Register = lazy(() => import("./components/Register/Register"));
 const Notfound = lazy(() => import("./components/Notfound/Notfound"));
 const About = lazy(() => import("./components/About/About"));
-
+const DataSummaryChart = lazy(() => import("./components/DataSummaryChart/DataSummaryChart"));
 
 // Define routes for the app
 let root = createHashRouter([
@@ -145,6 +145,16 @@ let root = createHashRouter([
           <ProtectedRoute>
             <Suspense fallback={""}>
               <About />
+            </Suspense>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "datasummarychart",
+        element: (
+          <ProtectedRoute>
+            <Suspense fallback={""}>
+              <DataSummaryChart />
             </Suspense>
           </ProtectedRoute>
         ),

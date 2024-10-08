@@ -164,6 +164,11 @@ export default function CartContextProvider(props) {
   });
 
 
+    function getRecentProductsFromCartContext() {
+      return axios.get("https://ecommerce.routemisr.com/api/v1/products");
+    }
+
+
     
 
   if (isLoading || userOrdersLoading  ) {
@@ -194,6 +199,7 @@ export default function CartContextProvider(props) {
         userOrdersData,
         cartItemsNo,
         setCartItemsNo,
+        getRecentProductsFromCartContext,
       }}
     >
       {props.children}

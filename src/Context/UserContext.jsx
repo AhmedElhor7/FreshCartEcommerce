@@ -19,7 +19,7 @@ export default function UserContextProvider(props) {
         console.error("Invalid token:", error);
       }
     }
-  }, []); // Dependency array empty to run only on mount
+  }, []); 
         // console.log(userId);
 
 

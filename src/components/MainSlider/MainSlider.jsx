@@ -13,12 +13,12 @@ export default function MainSlider() {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
+      autoplay: true, 
     };
 
   return (
     <>
-      <div className="py-16 container mx-auto">
+      <div className=" container mx-auto pt-0 2xl:pt-28">
         <Slider {...settings}>
           <img
             loading="lazy"

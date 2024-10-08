@@ -4,12 +4,15 @@ import { CartContext } from "../../Context/CartContext";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { removeProductIdFromLocalStorage } from "../Utils/scrollUtils";
 
 // Initialize product IDs from local storage
 const getProductIdsFromLocalStorage = () => {
   const storedIds = localStorage.getItem('productIds');
   return storedIds ? JSON.parse(storedIds) : [];
 };
+
+
 
 export default function Cart() {
   const {
@@ -72,6 +75,7 @@ export default function Cart() {
     setCart(responseOfDeleteItemFromCart.data.data);
 
     if (responseOfDeleteItemFromCart.data.status === "success") {
+      removeProductIdFromLocalStorage(productId);
       setCartItemsNo(responseOfDeleteItemFromCart.data.numOfCartItems);
         // Remove the product ID from the state and localStorage
   setProductIdAlreadyAddedToCart((prevIds) => {
@@ -97,6 +101,7 @@ export default function Cart() {
     setCart(responseOfDeleteAllCart.data.data);
 
     if (responseOfDeleteAllCart.statusText === "OK") {
+localStorage.removeItem("productIds");
       setCartItemsNo(0);
         // Clear productIdAlreadyAddedToCart in state and localStorage
   setProductIdAlreadyAddedToCart([]);
@@ -126,7 +131,7 @@ export default function Cart() {
       <Helmet>
         <title>Cart</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-green-600 flex items-center justify-center pb-2 pt-16">
+      <h2 className="text-4xl font-bold text-green-600 flex items-center justify-center pb-2 2xl:mt-28 ">
         Shopping Cart
       </h2>
       {cart?.products.length === 0 ? (

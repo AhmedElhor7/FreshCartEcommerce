@@ -30,7 +30,7 @@ export default function Categories() {
       <Helmet>
         <title>Categories</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-green-600 flex items-center justify-center pb-2 pt-16">
+      <h2 className="text-4xl font-bold text-green-600 flex items-center justify-center pb-2  2xl:mt-28">
         Categories
       </h2>
       <div className="container mx-auto py-2">

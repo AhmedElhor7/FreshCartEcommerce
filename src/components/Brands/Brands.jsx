@@ -36,7 +36,7 @@ export default function Brands() {
       <Helmet>
         <title>Brands</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-green-600 flex items-center justify-center pb-2 pt-16">
+      <h2 className="text-4xl font-bold text-green-600 flex items-center justify-center pb-2  2xl:mt-28">
         Brands
       </h2>
       <div className="container mx-auto py-2">

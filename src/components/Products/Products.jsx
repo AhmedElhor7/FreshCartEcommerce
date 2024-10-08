@@ -11,7 +11,7 @@ export default function Products() {
       <Helmet>
         <title>Products</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-green-600 flex items-center justify-center pb-6 pt-16">
+      <h2 className="text-4xl font-bold text-green-600 flex items-center justify-center pb-6  2xl:mt-28">
         Products
       </h2>
       <RecentProducts></RecentProducts>

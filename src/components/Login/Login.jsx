@@ -81,10 +81,12 @@ useEffect(() => {
   return (
     <>
       <Helmet>
-                <title>Login</title>
-            </Helmet>
-      <div className="py-14 max-w-xl mx-auto ">
-        <h2 className="text-3xl font-bold mb-6 pt-5 green-color">Login Now</h2>
+        <title>Login</title>
+      </Helmet>
+      <div className=" max-w-xl mx-auto ">
+        <h2 className="text-3xl font-bold mb-6 green-color  2xl:mt-28">
+          Login Now
+        </h2>
         {errorMessage ? (
           <div
             className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
