@@ -68,11 +68,11 @@ export default function Login() {
   return (
     <>
       <Helmet>
-        <title>Login uuuuu</title>
+        <title>Login </title>
       </Helmet>
       <div className="max-w-xl mx-auto">
         <h2 className="text-3xl font-bold mb-6 green-color 2xl:mt-28">
-          Login Now
+          Login Now uuuuu
         </h2>
         {errorMessage && (
           <div
