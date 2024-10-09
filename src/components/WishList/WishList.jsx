@@ -198,7 +198,7 @@ return (
                       : "bg-gray-200 dark:bg-gray-700"
                   }
                 >
-                  <th scope="row" className="px-6 py-4">
+                  <th scope="row" className="px-6 py-4 dark:text-gray-400">
                     {itemIndex + 1}
                   </th>
                   <th scope="row" className="px-6 py-4">
@@ -208,13 +208,13 @@ return (
                       alt={item.title}
                     />
                   </th>
-                  <td className="px-6 py-4">{item.description}</td>
-                  <td className="px-6 py-4">{item.price}</td>
-                  <td className="px-6 py-4">{item.ratingsAverage}</td>
-                  <td className="px-6 py-4">{item.updatedAt.slice(0, 10)}</td>
-                  <td className="px-6 py-4">{item.quantity}</td>
-                  <td className="px-6 py-4">{item.title}</td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 dark:text-gray-400">{item.description}</td>
+                  <td className="px-6 py-4 dark:text-gray-400">{item.price}</td>
+                  <td className="px-6 py-4 dark:text-gray-400">{item.ratingsAverage}</td>
+                  <td className="px-6 py-4 dark:text-gray-400">{item.updatedAt.slice(0, 10)}</td>
+                  <td className="px-6 py-4 dark:text-gray-400">{item.quantity}</td>
+                  <td className="px-6 py-4 dark:text-gray-400">{item.title}</td>
+                  <td className="px-6 py-4 dark:text-gray-400">
                     <span>
                       {loading && wishListCuurnetProductId === item._id ? (
                         <i className="fas fa-spinner fa-spin text-3xl text-green-500"></i>

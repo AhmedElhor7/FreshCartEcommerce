@@ -99,10 +99,18 @@ export default function AllOrders() {
                 >
                   {order.shippingAddress.details}
                 </th>
-                <td className="px-6 py-4">{order.shippingAddress.phone}</td>
-                <td className="px-6 py-4">{order.shippingAddress.city}</td>
-                <td className="px-6 py-4">{order.createdAt.slice(0, 10)}</td>
-                <td className="px-6 py-4">{order.paymentMethodType}</td>
+                <td className="px-6 py-4 dark:text-gray-400">
+                  {order.shippingAddress.phone}
+                </td>
+                <td className="px-6 py-4 dark:text-gray-400">
+                  {order.shippingAddress.city}
+                </td>
+                <td className="px-6 py-4 dark:text-gray-400">
+                  {order.createdAt.slice(0, 10)}
+                </td>
+                <td className="px-6 py-4 dark:text-gray-400">
+                  {order.paymentMethodType}
+                </td>
                 <Link to={`/detailsOrders/${userId}/${order.id}`}>
                   <td
                     title={`You have ${order.cartItems.length} items in your cart. Click To Show.`}
@@ -111,7 +119,9 @@ export default function AllOrders() {
                     {order.cartItems.length}
                   </td>
                 </Link>
-                <td className="px-6 py-4">{order.totalOrderPrice}</td>
+                <td className="px-6 py-4 dark:text-gray-400">
+                  {order.totalOrderPrice}
+                </td>
               </tr>
             ))}
           </tbody>

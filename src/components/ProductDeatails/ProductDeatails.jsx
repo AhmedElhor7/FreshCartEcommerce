@@ -161,7 +161,7 @@ var settings = {
       </Helmet>
       <div className="container mx-auto pt-5 lg:pt-28">
         <div className="row">
-          <div className="w-full md:w-1/2 lg:w-1/4">
+          <div className="w-full md:w-1/2 lg:w-1/4 px-4">
             <div className="md:pe-4 w-full">
               <Slider {...settings}>
                 {data?.data.data.images.map((src) => (

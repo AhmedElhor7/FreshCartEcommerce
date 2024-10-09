@@ -1,9 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { userContext } from "../../Context/UserContext";
 import { CartContext } from "../../Context/CartContext";
 
 export default function Navbar() {
+
+useEffect(() => {
+  const darkMode = localStorage.getItem("darkMode");
+  if (darkMode === "true") {
+    document.body.classList.add("dark");
+    document.body.classList.add("dark-mode-active"); // Ensure this class is added
+  }
+}, []);
+
+const handleToggleDarkMode = () => {
+  const isDarkMode = document.body.classList.toggle("dark");
+  document.body.classList.toggle("dark-mode-active"); // Toggle custom class for dark mode
+  localStorage.setItem("darkMode", isDarkMode); // Store the preference in localStorage
+};
+
   const { userLogin, setUserLogin } = useContext(userContext);
   const { cartItemsNo } = useContext(CartContext);
 
@@ -20,10 +35,39 @@ export default function Navbar() {
   }
 
   return (
-
     <>
-      <nav className="2xl:fixed 2xl:w-full 2xl:top-0 2xl:left-0 2xl:right-0 2xl:z-50 bg-green-100 border-gray-200 dark:bg-gray-900 mt-6 pb-6 py-4">
+      <nav className="2xl:fixed 2xl:w-full 2xl:top-0 2xl:left-0 2xl:right-0 2xl:z-50 bg-green-100 border-gray-200 dark:bg-gray-900 dark:text-white mt-6 pb-6 py-4">
         <div className="  flex flex-wrap items-center justify-between mx-auto p-4">
+
+ <div className="flex justify-center items-center dark:bg-gray-800">
+      <button
+        onClick={handleToggleDarkMode}
+        className="h-12 w-12 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+      >
+        {/* Sun Icon (Visible in Light Mode) */}
+        <svg
+          className="fill-violet-700 block dark:hidden"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+        </svg>
+
+        {/* Moon Icon (Visible in Dark Mode) */}
+        <svg
+          className="fill-yellow-500 hidden dark:block"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+            fillRule="evenodd"
+            clipRule="evenodd"
+          />
+        </svg>
+      </button>
+    </div>
+
           {/* Logo Section */}
           <Link
             to={"/"}
@@ -62,7 +106,7 @@ export default function Navbar() {
 
           {/* Navigation Section */}
           <div
-            className={`flex items-center w-full 2xl:block 2xl:w-auto ${
+            className={`flex items-center w-full 2xl:block 2xl:w-auto dark:text-white ${
               isOpen ? "block" : "hidden"
             }`}
             id="navbar-default"
@@ -70,31 +114,31 @@ export default function Navbar() {
             <ul className="font-medium flex flex-col 2xl:flex-row 2xl:items-center 2xl:space-x-8 rtl:space-x-reverse">
               {userLogin && (
                 <>
-                  <li className="text-3xl text-slate-900 font-light py-1">
+                  <li className="text-3xl text-slate-900 dark:text-white font-light py-1">
                     <NavLink to={""}>Home</NavLink>
                   </li>
-                  <li className="text-3xl text-slate-900 font-light py-1">
+                  <li className="text-3xl text-slate-900 dark:text-white font-light py-1">
                     <NavLink to={"cart"}>Cart</NavLink>
                   </li>
-                  <li className="text-3xl text-slate-900 font-light py-1">
+                  <li className="text-3xl text-slate-900 dark:text-white font-light py-1">
                     <NavLink to={"products"}>Products</NavLink>
                   </li>
-                  <li className="text-3xl text-slate-900 font-light py-1">
+                  <li className="text-3xl text-slate-900 dark:text-white font-light py-1">
                     <NavLink to={"brands"}>Brands</NavLink>
                   </li>
-                  <li className="text-3xl text-slate-900 font-light py-1">
+                  <li className="text-3xl text-slate-900 dark:text-white font-light py-1">
                     <NavLink to={"categories"}>Categories</NavLink>
                   </li>
-                  <li className="text-3xl text-slate-900 font-light py-1">
+                  <li className="text-3xl text-slate-900 dark:text-white font-light py-1">
                     <NavLink to={"wishlist"}>WishList</NavLink>
                   </li>
-                  <li className="text-3xl text-slate-900 font-light py-1">
+                  <li className="text-3xl text-slate-900 dark:text-white font-light py-1">
                     <NavLink to={"allorders"}>Orders</NavLink>
                   </li>
-                  <li className="text-3xl text-slate-900 font-light py-1">
+                  <li className="text-3xl text-slate-900 dark:text-white font-light py-1">
                     <NavLink to={"datasummarychart"}>Chart</NavLink>
                   </li>
-                  <li className="relative text-3xl text-slate-900 font-light pt-3 pe-2">
+                  <li className="relative text-3xl text-slate-900 dark:text-white font-light pt-3 pe-2">
                     <Link to={"cart"}>
                       <div className="relative inline-block">
                         <i className="fa-solid fa-cart-arrow-down text-4xl"></i>
@@ -108,17 +152,17 @@ export default function Navbar() {
               )}
 
               {userLogin ? (
-                <li className="text-3xl text-slate-900 font-light py-1">
+                <li className="text-3xl text-slate-900 dark:text-white font-light py-1">
                   <NavLink onClick={logOut} to={"/login"}>
                     Logout
                   </NavLink>
                 </li>
               ) : (
                 <>
-                  <li className="text-3xl text-slate-900 font-light py-1">
+                  <li className="text-3xl text-slate-900 dark:text-white font-light py-1">
                     <NavLink to={"login"}>Login</NavLink>
                   </li>
-                  <li className="text-3xl text-slate-900 font-light py-1">
+                  <li className="text-3xl text-slate-900 dark:text-white font-light py-1">
                     <NavLink to={"register"}>Register</NavLink>
                   </li>
                 </>

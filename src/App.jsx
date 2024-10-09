@@ -191,7 +191,8 @@ let root = createHashRouter([
 const queryClient = new QueryClient();
 
 function App() {
-  const { getLoggedUserCart, cartItemsNo, setCartItemsNo } =
+
+  const { getLoggedUserCart, setCartItemsNo } =
     useContext(CartContext);
 
   useEffect(() => {

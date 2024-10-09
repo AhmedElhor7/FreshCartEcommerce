@@ -74,14 +74,14 @@ export default function Checkout() {
       // Safely check if the response contains the necessary data
       if (response?.data?.status === "success") {
         // console.log(response?.data.session?.url);
-  
-        // Handle online payment by opening a new tab with the session URL
+
+        // Handle online payment
         if (paymentOnline && response?.data?.session?.url) {
-          window.open(response?.data.session.url, '_blank', 'noopener,noreferrer');
+          window.location.href = response?.data?.session?.url; 
         } else {
-          navigate('/allorders');
+          navigate("/allorders");
         }
-        
+
         // Show success toast
         toast.success("Order created successfully", {
           duration: 5000,
@@ -132,11 +132,11 @@ export default function Checkout() {
 
   return (
     <>
-    <Helmet>
-                <title>Checkout</title>
-            </Helmet>
+      <Helmet>
+        <title>Checkout</title>
+      </Helmet>
       <div className="container mx-auto py-6">
-        <h2 className="text-4xl font-bold text-green-600 pb-6 pt-8  text-center">
+        <h2 className="text-4xl font-bold text-green-600 pb-6 pt-8 2xl:mt-28  text-center">
           Checkout
         </h2>
         <form onSubmit={Formik.handleSubmit}>
@@ -230,17 +230,18 @@ export default function Checkout() {
             </div>
           ) : null}
 
-
-<div className='flex justify-center items-center py-6 text-2xl font-bold'>
-<div className="checkbox-wrapper-19">
-  <input type="checkbox" id="onlinePayment" onChange={()=>setPaymentOnline(!paymentOnline)} />
-  <label  htmlFor="onlinePayment" className="check-box"></label>
-  <span className='ps-2'>Online Payment</span>
-</div>
-
-</div>
+          <div className="flex justify-center items-center py-6 text-2xl font-bold">
+            <div className="checkbox-wrapper-19">
+              <input
+                type="checkbox"
+                id="onlinePayment"
+                onChange={() => setPaymentOnline(!paymentOnline)}
+              />
+              <label htmlFor="onlinePayment" className="check-box"></label>
+              <span className="ps-2">Online Payment</span>
+            </div>
+          </div>
           <div className="flex justify-center items-center">
-
             {loaderForPayment ? (
               <i className="fas fa-spinner fa-spin text-3xl text-green-500"></i>
             ) : (
@@ -249,8 +250,11 @@ export default function Checkout() {
                 type="submit"
                 className=" text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm sm:w-1/3 w-2/4 px-10 py-3 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
               >
-                {paymentOnline ? <span>Cash Online</span> :<span>Cash On Delviry</span>}
-                
+                {paymentOnline ? (
+                  <span>Cash Online</span>
+                ) : (
+                  <span>Cash On Delviry</span>
+                )}
               </button>
             )}
           </div>

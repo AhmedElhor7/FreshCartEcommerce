@@ -28,11 +28,11 @@ export default function DetailsOrders() {
 
   return (
     <>
-        <Helmet>
-                <title>Deatials Orders</title>
-            </Helmet>
+      <Helmet>
+        <title>Deatials Orders</title>
+      </Helmet>
       <div className="container mx-auto py-10">
-        <h2 className="text-4xl font-bold text-green-600 flex items-center justify-center pb-8 pt-4">
+        <h2 className="text-4xl font-bold text-green-600 flex items-center justify-center pb-8 pt-4 2xl:mt-28">
           All Orders Details
         </h2>
 
@@ -55,7 +55,10 @@ export default function DetailsOrders() {
           <table className="w-full text-sm  rtl:text-right text-gray-500 dark:text-gray-400 text-center">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" className="px-6 py-3 text-lg">
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-lg dark:text-gray-400"
+                >
                   Number Of Items
                 </th>
                 <th scope="col" className="px-6 py-3 text-lg">
@@ -111,7 +114,10 @@ export default function DetailsOrders() {
                               : "bg-gray-200  dark:bg-gray-700"
                           }
                         >
-                          <th scope="row" className="px-6 py-4">
+                          <th
+                            scope="row"
+                            className="px-6 py-4 dark:text-gray-400"
+                          >
                             {itemIndex + 1}
                           </th>
                           <th scope="row" className="px-6 py-4">
@@ -121,31 +127,35 @@ export default function DetailsOrders() {
                               alt={item.product.title}
                             />
                           </th>
-                          <td className="px-6 py-4  ">{item.product.title}</td>
+                          <td className="px-6 py-4  dark:text-gray-400">
+                            {item.product.title}
+                          </td>
 
-                          <td className="px-6 py-4">{item.price}</td>
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-4 dark:text-gray-400">
+                            {item.price}
+                          </td>
+                          <td className="px-6 py-4 dark:text-gray-400">
                             {item.product.ratingsAverage}
                           </td>
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-4 dark:text-gray-400">
                             {filteredOrder.updatedAt.slice(0, 10)}
                           </td>
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-4 dark:text-gray-400">
                             {filteredOrder.paymentMethodType}
                           </td>
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-4 dark:text-gray-400">
                             {filteredOrder.isDelivered
                               ? "Delivered"
                               : "Not Delivered"}
                           </td>
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-4 dark:text-gray-400">
                             {filteredOrder.isPaid ? "Paid" : "Not Paid"}
                           </td>
 
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-4 dark:text-gray-400">
                             {filteredOrder.taxPrice}
                           </td>
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-4 dark:text-gray-400">
                             {filteredOrder.shippingPrice}
                           </td>
                         </tr>
