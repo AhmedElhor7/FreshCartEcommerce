@@ -93,8 +93,8 @@ export default function Register() {
       <Helmet>
         <title>Register</title>
       </Helmet>
-      <div className="max-w-xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6 green-color  2xl:mt-28">
+      <div className="container mx-auto md:w-1/2">
+        <h2 className="text-3xl font-bold mb-6 green-color text-center md:text-start  2xl:mt-28">
           Register Now
         </h2>
         {errorMessage ? (
@@ -109,7 +109,7 @@ export default function Register() {
         )}
 
         <form onSubmit={Formik.handleSubmit}>
-          <div className="relative z-0 w-full mb-5 group">
+          <div className="relative z-0 w-3/4 md:w-full mx-auto mb-5 group">
             <input
               onChange={Formik.handleChange}
               onBlur={Formik.handleBlur}
@@ -130,13 +130,13 @@ export default function Register() {
           {/* Show Alert If Touch Input And Not Write Any Value Or Not Target Reg Exprtion  */}
           {Formik.errors.name && Formik.touched.name ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-800  w-3/4 md:w-full mx-auto rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {Formik.errors.name}
             </div>
           ) : null}
-          <div className="relative z-0 w-full mb-5 group">
+          <div className="relative z-0 w-3/4 md:w-full mx-auto mb-5 group">
             <input
               onChange={Formik.handleChange}
               onBlur={Formik.handleBlur}
@@ -157,14 +157,14 @@ export default function Register() {
 
           {Formik.errors.phone && Formik.touched.phone ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-800 w-3/4 md:w-full mx-auto rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {Formik.errors.phone}
             </div>
           ) : null}
 
-          <div className="relative z-0 w-full mb-5 group">
+          <div className="relative z-0 w-3/4 md:w-full mx-auto mb-5 group">
             <input
               onChange={Formik.handleChange}
               onBlur={Formik.handleBlur}
@@ -184,13 +184,13 @@ export default function Register() {
           </div>
           {Formik.errors.email && Formik.touched.email ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-800 w-3/4 md:w-full mx-auto rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {Formik.errors.email}
             </div>
           ) : null}
-          <div className="relative z-0 w-full mb-5 group">
+          <div className="relative z-0 w-3/4 md:w-full mx-auto mb-5 group">
             <input
               onChange={Formik.handleChange}
               onBlur={Formik.handleBlur}
@@ -210,13 +210,13 @@ export default function Register() {
           </div>
           {Formik.errors.password && Formik.touched.password ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-800 w-3/4 md:w-full mx-auto rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {Formik.errors.password}
             </div>
           ) : null}
-          <div className="relative z-0 w-full mb-5 group">
+          <div className="relative z-0 w-3/4 md:w-full mx-auto mb-5 group">
             <input
               onChange={Formik.handleChange}
               onBlur={Formik.handleBlur}
@@ -236,19 +236,25 @@ export default function Register() {
           </div>
           {Formik.errors.rePassword && Formik.touched.rePassword ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-800 w-3/4 md:w-full mx-auto rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {Formik.errors.rePassword}
             </div>
           ) : null}
-          <button
-            type="submit"
-            className="btn btn-primary  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-          >
-            {isLoading ? <i className="fas fa-spinner fa-spin"></i> : "Submit"}
-          </button>
-          <div>
+          <div className="text-center md:text-start">
+            <button
+              type="submit"
+              className="btn btn-primary  font-medium rounded-lg text-sm w-3/4 md:w-full mx-auto  px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            >
+              {isLoading ? (
+                <i className="fas fa-spinner fa-spin"></i>
+              ) : (
+                "Submit"
+              )}
+            </button>
+          </div>
+          <div className="text-center md:text-start py-2">
             <p>
               Have an account?
               <span className="text-xl px-2 cursor-pointer green-color">
