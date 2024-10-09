@@ -72,7 +72,7 @@ export default function Login() {
       </Helmet>
       <div className="max-w-xl mx-auto">
         <h2 className="text-3xl font-bold mb-6 green-color 2xl:mt-28">
-          Login Now 
+          Login Now
         </h2>
         {errorMessage && (
           <div
@@ -91,12 +91,12 @@ export default function Login() {
               type="email"
               name="email"
               id="userEmail"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 dark:text-gray-400 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
               placeholder=" "
             />
             <label
               htmlFor="userEmail"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-green-600"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-green-600"
             >
               Email address
             </label>
@@ -117,12 +117,12 @@ export default function Login() {
               type="password"
               name="password"
               id="userPassword"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 dark:text-gray-400 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
               placeholder=" "
             />
             <label
               htmlFor="userPassword"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-green-600"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-green-600"
             >
               Password
             </label>
