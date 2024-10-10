@@ -65,7 +65,7 @@ export default function Checkout() {
       
       // Check if payment is online and adjust the URL accordingly
       if (paymentOnline) {
-        url = `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=https://ahmedelhor7.github.io/FreshCartEcommerce/#`;
+        url = `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=https://ahmedelhor7.github.io/FreshCartEcommerce`;
       }
       
       // Await the API response
@@ -81,7 +81,7 @@ export default function Checkout() {
         if (paymentOnline && response?.data?.session?.url) {
           window.location.href = response?.data?.session?.url; 
         } else {
-          navigate("allorders");
+          navigate("#allorders");
         }
 
         // Show success toast
