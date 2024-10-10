@@ -73,6 +73,8 @@ export default function Checkout() {
   
       // Safely check if the response contains the necessary data
       if (response?.data?.status === "success") {
+        localStorage.removeItem('productIds'); // Remove the product IDs from localStorage
+
         // console.log(response?.data.session?.url);
 
         // Handle online payment
