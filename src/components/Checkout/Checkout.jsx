@@ -66,7 +66,7 @@ export default function Checkout() {
       // Check if payment is online and adjust the URL accordingly
       if (paymentOnline) {
         // Encode the URL to ensure compatibility with the payment API
-        const returnUrl = encodeURIComponent("https://ahmedelhor7.github.io/FreshCartEcommerce");
+        const returnUrl = encodeURIComponent("https://ahmedelhor7.github.io/FreshCartEcommerce#");
         url = `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${returnUrl}`;
       }
       
