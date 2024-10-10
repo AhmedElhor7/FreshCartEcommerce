@@ -81,7 +81,7 @@ export default function Checkout() {
         if (paymentOnline && response?.data?.session?.url) {
           window.location.href = response?.data?.session?.url; 
         } else {
-          navigate("#allorders");
+          navigate("/allorders");
         }
 
         // Show success toast
