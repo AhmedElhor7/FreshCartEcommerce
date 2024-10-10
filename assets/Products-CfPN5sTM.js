@@ -1,0 +1,1 @@
+import{j as t,H as e}from"./index-CEAsCHb2.js";import{R as r}from"./RecentProducts-Fnk5hS8g.js";function o(){return t.jsxs(t.Fragment,{children:[t.jsx(e,{children:t.jsx("title",{children:"Products"})}),t.jsx("h2",{className:"text-4xl font-bold text-green-600 flex items-center justify-center pb-6  2xl:mt-28",children:"Products"}),t.jsx(r,{})]})}export{o as default};

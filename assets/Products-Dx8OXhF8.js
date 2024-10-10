@@ -1,1 +1,0 @@
-import{j as t,H as e}from"./index-B06Mz6zW.js";import{R as r}from"./RecentProducts-DZtgPIbe.js";function o(){return t.jsxs(t.Fragment,{children:[t.jsx(e,{children:t.jsx("title",{children:"Products"})}),t.jsx("h2",{className:"text-4xl font-bold text-green-600 flex items-center justify-center pb-6  2xl:mt-28",children:"Products"}),t.jsx(r,{})]})}export{o as default};
