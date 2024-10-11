@@ -65,7 +65,9 @@ export default function Checkout() {
       
       // Check if payment is online and adjust the URL accordingly
       if (paymentOnline) {
-        url = `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:5173`;
+        // Encode the URL to ensure compatibility with the payment API
+        const returnUrl = encodeURIComponent("https://ahmedelhor7.github.io/FreshCartEcommerce/#");
+        url = `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${returnUrl}`;
       }
       
       // Await the API response
@@ -73,6 +75,8 @@ export default function Checkout() {
   
       // Safely check if the response contains the necessary data
       if (response?.data?.status === "success") {
+        localStorage.removeItem('productIds'); // Remove the product IDs from localStorage
+
         // console.log(response?.data.session?.url);
 
         // Handle online payment

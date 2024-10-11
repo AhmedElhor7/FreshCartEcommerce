@@ -21,7 +21,7 @@ const handleToggleDarkMode = () => {
   localStorage.setItem("darkMode", isDarkMode); // Store the preference in localStorage
 };
 
-  const { userLogin, setUserLogin } = useContext(userContext);
+  const { userLogin, setUserLogin } = useContext(userContext);  
   const { cartItemsNo } = useContext(CartContext);
 
   const [isOpen, setIsOpen] = useState(false);
