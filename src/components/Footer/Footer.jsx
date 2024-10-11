@@ -1,6 +1,7 @@
 import React from "react";
 import Style from "./Footer.module.css";  
 import { Link } from "react-router-dom";
+import { scrollToTop } from "../Utils/scrollUtils";
 
 export default function Footer() {
   return (
@@ -124,7 +125,10 @@ export default function Footer() {
             </ul>
           </div>
           <Link to={"/about"}>
-            <div className="grid grid-cols-1 gap-8 border-t border-green-500 pt-8 sm:grid-cols-2 lg:grid-cols-4 lg:pt-16 dark:border-gray-800">
+            <div
+              onClick={scrollToTop}
+              className="grid grid-cols-1 gap-8 border-t border-green-500 pt-8 sm:grid-cols-2 lg:grid-cols-4 lg:pt-16 dark:border-gray-800"
+            >
               <div>
                 <p className="font-medium text-gray-100 dark:text-white text-2xl">
                   Categories
