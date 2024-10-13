@@ -14,11 +14,12 @@ export default function MainSlider() {
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true, 
+      arrows: false,
     };
 
   return (
     <>
-      <div className=" container mx-auto pt-0 2xl:pt-28">
+      <div className="w-5/6 md:w-full container mx-auto pt-0 2xl:pt-28">
         <Slider {...settings}>
           <img
             loading="lazy"

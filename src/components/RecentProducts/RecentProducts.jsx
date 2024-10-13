@@ -170,7 +170,7 @@ useEffect(() => {
     <>
       <section>
         <div className="container mx-auto py-2">
-          <div className="flex items-center w-9/12 mx-auto">
+          <div className="flex items-center w-5/6 md:w-9/12 mx-auto">
             <label htmlFor="voiceSearch" className="sr-only">
               Search
             </label>
@@ -198,7 +198,7 @@ useEffect(() => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 py-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search Categories With Your Voice"
+                placeholder="Search Categories by Voice"
                 required
               />
               <button
@@ -208,7 +208,7 @@ useEffect(() => {
                 onClick={handleVoiceSearch}
               >
                 <svg
-                  className="w-6 h-6 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" // Increased size here
+                  className="w-6 h-6 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

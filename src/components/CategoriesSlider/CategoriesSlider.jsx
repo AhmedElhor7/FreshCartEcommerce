@@ -12,6 +12,8 @@ export default function CategoriesSlider() {
     slidesToShow: 6,
     slidesToScroll: 2,
     autoplay: true,
+    arrows: false,
+
     responsive: [
       {
         breakpoint: 1020, // For large screens (e.g., tablets or desktops)
@@ -62,7 +64,7 @@ export default function CategoriesSlider() {
 
   return (
     <>
-      <div className="py-6 px-6 container mx-auto text-center">
+      <div className="py-6 px-6 w-5/6 md:w-full container mx-auto text-center">
         <h2 className="py-4 text-2xl text-center lg:text-left font-bold">
           Shop Popubler Categorie
         </h2>

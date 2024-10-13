@@ -114,7 +114,7 @@ export default function AllOrders() {
                 <Link to={`/detailsOrders/${userId}/${order.id}`}>
                   <td
                     title={`You have ${order.cartItems.length} items in your cart. Click To Show.`}
-                    className="px-6 py-4 mt-2 btn btn-primary cursor-pointer"
+                    className="px-6 py-4 mt-8 lg:mt-2 btn btn-primary cursor-pointer"
                   >
                     {order.cartItems.length}
                   </td>
