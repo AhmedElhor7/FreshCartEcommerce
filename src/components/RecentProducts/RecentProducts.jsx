@@ -265,7 +265,7 @@ useEffect(() => {
                     <button
                       onClick={() => callFnAddProductToCart(product.id)}
                       disabled={loading && product.id === cuurnetProductId}
-                      className="flex justify-center items-center bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                      className="btn btn-primary flex justify-center items-center bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
                     >
                       <i className="fa-solid fa-cart-plus me-2"></i>
                       {loading && product.id === cuurnetProductId
