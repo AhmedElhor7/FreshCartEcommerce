@@ -178,7 +178,7 @@ p {
       height: calc(var(--checkbox-height) * 1.2);
     }
   }
-  
+
 /* Vendor prefix for Mozilla Firefox */
   @-moz-keyframes dothatopcheck-19 {
     0% {
@@ -196,7 +196,7 @@ p {
     display: none;
   }
 
-  .checkbox-wrapper-19 .check-box {
+  .checkbox-wrapper-19 .check-box { 
     height: var(--checkbox-height);
     width: var(--checkbox-height);
     background-color: transparent;
