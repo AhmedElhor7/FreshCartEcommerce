@@ -122,15 +122,18 @@ p {
     --checkbox-height: 25px;
   }
 
+/* Animation for the bottom part of the checkmark */
+/* Vendor prefix for Mozilla Firefox */
   @-moz-keyframes dothabottomcheck-19 {
     0% {
       height: 0;
     }
     100% {
-      height: calc(var(--checkbox-height) / 2);
+      height: calc(var(--checkbox-height) / 2); /* Animate to half of the checkbox height */
     }
   }
 
+/* Vendor prefix for WebKit-based browsers (e.g., Safari, older Chrome) */
   @-webkit-keyframes dothabottomcheck-19 {
     0% {
       height: 0;
@@ -140,6 +143,7 @@ p {
     }
   }
 
+/* Standard syntax for modern browsers */
   @keyframes dothabottomcheck-19 {
     0% {
       height: 0;
@@ -148,7 +152,8 @@ p {
       height: calc(var(--checkbox-height) / 2);
     }
   }
-
+/* Animation for the top part of the checkmark */
+/* Standard syntax for modern browsers */
   @keyframes dothatopcheck-19 {
     0% {
       height: 0;
@@ -161,6 +166,7 @@ p {
     }
   }
 
+/* Vendor prefix for WebKit-based browsers (e.g., Safari, older Chrome) */
   @-webkit-keyframes dothatopcheck-19 {
     0% {
       height: 0;
@@ -172,7 +178,8 @@ p {
       height: calc(var(--checkbox-height) * 1.2);
     }
   }
-
+  
+/* Vendor prefix for Mozilla Firefox */
   @-moz-keyframes dothatopcheck-19 {
     0% {
       height: 0;
