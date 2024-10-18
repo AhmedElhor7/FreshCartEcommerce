@@ -139,13 +139,20 @@ export default function CartContextProvider(props) {
       queryFn: getLoggedUserCart,
     });
 
-  function getLoggedUserCart() {
-    return axios.get(`https://ecommerce.routemisr.com/api/v1/cart`, {
+ // Function to fetch logged-in user's cart
+  async function getLoggedUserCart() {
+    const token = localStorage.getItem("userToken");
+    if (!token) {
+      console.error("No token found");
+      return;
+    }
+    return await axios.get(`https://ecommerce.routemisr.com/api/v1/cart`, {
       headers,
     });
   }
 
-  const { data, error, isError, isFetched, isLoading } = useQuery({
+  // Fetch cart data using React Query
+  const { data, isLoading, error } = useQuery({
     queryKey: ["YourCart"],
     queryFn: getLoggedUserCart,
     refetchOnWindowFocus: false,

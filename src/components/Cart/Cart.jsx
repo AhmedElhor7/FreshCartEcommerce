@@ -16,8 +16,8 @@ const getProductIdsFromLocalStorage = () => {
 
 export default function Cart() {
   const {
+    getLoggedUserCart,
     data,
-    cartData,
     updateCartItemCount,
     deleteItemFromCart,
     deleteAllCart,
@@ -34,9 +34,16 @@ export default function Cart() {
   useState(getProductIdsFromLocalStorage());
 
   useEffect(() => {
-    // console.log(data.data);
+    callLoggedUserCart();
     setCart(data.data.data);
-  }, [cartData]);
+  }, [cart]);
+
+ async function callLoggedUserCart() {
+    let cartDataLoggedUser = await getLoggedUserCart();
+    if (cartDataLoggedUser.data.status === "success") {
+      setCart(cartDataLoggedUser.data.data);
+    }
+  }
 
   async function CallUpdateCartItemCount(productId, count) {
     setCartCuurnetProductId(productId);
@@ -101,6 +108,7 @@ export default function Cart() {
     setCart(responseOfDeleteAllCart.data.data);
 
     if (responseOfDeleteAllCart.statusText === "OK") {
+            setCart(responseOfDeleteAllCart.data.data);
 localStorage.removeItem("productIds");
       setCartItemsNo(0);
         // Clear productIdAlreadyAddedToCart in state and localStorage
@@ -112,6 +120,7 @@ localStorage.removeItem("productIds");
         style: { height: "5rem" },
       });
       setLoaderForRemoveAllCart(false);
+      callLoggedUserCart();
     } else {
       toast.error("Faild Delete All Cart");
       setLoaderForRemoveAllCart(false);

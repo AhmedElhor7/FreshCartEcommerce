@@ -84,7 +84,7 @@ async function callFnAddProductToCart(productId) {
 
     setCuurnetProductId(productId);
     let response = await addProductToCart(productId);
-    console.log(response);
+    // console.log(response);
 
     if (response.data.status === "success") {
       // Update the state with the new product ID
