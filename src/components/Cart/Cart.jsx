@@ -53,8 +53,8 @@ export default function Cart() {
       productId,
       count
     );
-    setCart(responseOfUpdateCartItemCount.data.data);
     if (responseOfUpdateCartItemCount.data.status === "success") {
+      setCart(responseOfUpdateCartItemCount.data.data);
       setCartItemsNo(responseOfUpdateCartItemCount.data.numOfCartItems);
         // Remove the product ID from the state and localStorage
   setProductIdAlreadyAddedToCart((prevIds) => {
