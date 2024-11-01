@@ -3,27 +3,42 @@ import Style from "./Categories.module.css";
 import { Helmet } from "react-helmet";
 import axios from "axios";
 import { CategoriesContext } from "../../Context/CategoriesContext";
+import { RingLoader } from "react-spinners";
 
 export default function Categories() {
+  const [loadingCategories, setLoadingCategories] = useState(true); // Added loading state
 
-      const { getAllCategories } = useContext(CategoriesContext);
-      const [allCategories, setAllCategories] = useState();
+  const { getAllCategories } = useContext(CategoriesContext);
+  const [allCategories, setAllCategories] = useState();
 
-      async function callGetAllCategories() {
-        let response = await getAllCategories();
-        // console.log(response);
-        
-        if (response.statusText === "OK") {
-          setAllCategories(response.data.data);
-        }
+  useEffect(() => {
+    callGetAllCategories();
+  }, []);
+
+  async function callGetAllCategories() {
+    setLoadingCategories(true);
+    try {
+      let response = await getAllCategories();
+      // console.log(response); 
+
+      if (response.statusText === "OK") {
+        setAllCategories(response.data.data);
       }
+    } finally {
+      setLoadingCategories(false);
+    }
+  }
 
-      useEffect(() => {
-        callGetAllCategories();
-      }, []);
+  // Render conditionally based on loadingCart state
+  if (loadingCategories) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <RingLoader color="green" size={150} />
+      </div>
+    );
+  }
 
-// console.log(allCategories);
-
+  // console.log(allCategories);
 
   return (
     <>

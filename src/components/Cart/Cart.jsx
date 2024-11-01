@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { removeProductIdFromLocalStorage } from "../Utils/scrollUtils";
+import { RingLoader } from "react-spinners";
 
 // Initialize product IDs from local storage
 const getProductIdsFromLocalStorage = () => {
@@ -26,23 +27,38 @@ export default function Cart() {
   const [loader, setLoader] = useState(false);
   const [loaderForRemove, setLoaderForRemove] = useState(false);
   const [loaderForRemoveAllCart, setLoaderForRemoveAllCart] = useState(false);
+  const [loadingCart, setLoadingCart] = useState(true); // Added loading state
 
   const [cartCuurnetProductId, setCartCuurnetProductId] = useState();
 
   const [cart, setCart] = useState();
   const [productIdAlreadyAddedToCart, setProductIdAlreadyAddedToCart] =
-  useState(getProductIdsFromLocalStorage());
+    useState(getProductIdsFromLocalStorage());
 
   useEffect(() => {
     callLoggedUserCart();
-    setCart(data.data.data);
-  }, [cart]);
+  }, []);
 
- async function callLoggedUserCart() {
-    let cartDataLoggedUser = await getLoggedUserCart();
-    if (cartDataLoggedUser.data.status === "success") {
-      setCart(cartDataLoggedUser.data.data);
+  async function callLoggedUserCart() {
+    setLoadingCart(true);
+
+    try {
+      let cartDataLoggedUser = await getLoggedUserCart();
+      if (cartDataLoggedUser.data.status === "success") {
+        setCart(cartDataLoggedUser.data.data);
+      }
+    } finally {
+      setLoadingCart(false);
     }
+  }
+
+  // Render conditionally based on loadingCart state
+  if (loadingCart) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <RingLoader color="green" size={150} />
+      </div>
+    );
   }
 
   async function CallUpdateCartItemCount(productId, count) {
@@ -53,15 +69,17 @@ export default function Cart() {
       productId,
       count
     );
-    if (responseOfUpdateCartItemCount.data.status === "success") {
+    if (responseOfUpdateCartItemCount?.data?.status === "success") {
+      console.log(responseOfUpdateCartItemCount.data.data);
+
       setCart(responseOfUpdateCartItemCount.data.data);
       setCartItemsNo(responseOfUpdateCartItemCount.data.numOfCartItems);
-        // Remove the product ID from the state and localStorage
-  setProductIdAlreadyAddedToCart((prevIds) => {
-    const updatedIds = prevIds.filter(id => id !== productId);
-    localStorage.setItem('productIds', JSON.stringify(updatedIds)); // Update localStorage
-    return updatedIds;
-  });
+      // Remove the product ID from the state and localStorage
+      setProductIdAlreadyAddedToCart((prevIds) => {
+        const updatedIds = prevIds.filter((id) => id !== productId);
+        localStorage.setItem("productIds", JSON.stringify(updatedIds)); // Update localStorage
+        return updatedIds;
+      });
       toast.success("Quantity updated successfully", {
         duration: 5000,
         position: window.innerWidth < 768 ? "top-center" : "right-top",
@@ -79,17 +97,17 @@ export default function Cart() {
     console.log(cartCuurnetProductId, productId);
     setLoaderForRemove(true);
     let responseOfDeleteItemFromCart = await deleteItemFromCart(productId);
-    setCart(responseOfDeleteItemFromCart.data.data);
 
-    if (responseOfDeleteItemFromCart.data.status === "success") {
+    if (responseOfDeleteItemFromCart?.data?.status === "success") {
+      setCart(responseOfDeleteItemFromCart.data.data);
       removeProductIdFromLocalStorage(productId);
       setCartItemsNo(responseOfDeleteItemFromCart.data.numOfCartItems);
-        // Remove the product ID from the state and localStorage
-  setProductIdAlreadyAddedToCart((prevIds) => {
-    const updatedIds = prevIds.filter(id => id !== productId);
-    localStorage.setItem('productIds', JSON.stringify(updatedIds)); // Update localStorage
-    return updatedIds;
-  });
+      // Remove the product ID from the state and localStorage
+      setProductIdAlreadyAddedToCart((prevIds) => {
+        const updatedIds = prevIds.filter((id) => id !== productId);
+        localStorage.setItem("productIds", JSON.stringify(updatedIds)); // Update localStorage
+        return updatedIds;
+      });
       toast.success("Item Deleted successfully", {
         duration: 5000,
         position: window.innerWidth < 768 ? "top-center" : "right-top",
@@ -105,15 +123,13 @@ export default function Cart() {
   async function CalldeleteAllCart() {
     setLoaderForRemoveAllCart(true);
     let responseOfDeleteAllCart = await deleteAllCart();
-    setCart(responseOfDeleteAllCart.data.data);
-
-    if (responseOfDeleteAllCart.statusText === "OK") {
-            setCart(responseOfDeleteAllCart.data.data);
-localStorage.removeItem("productIds");
+    if (responseOfDeleteAllCart?.statusText === "OK") {
+      setCart(responseOfDeleteAllCart.data.data);
+      localStorage.removeItem("productIds");
       setCartItemsNo(0);
-        // Clear productIdAlreadyAddedToCart in state and localStorage
-  setProductIdAlreadyAddedToCart([]);
-  localStorage.removeItem('productIds'); // Remove the product IDs from localStorage
+      // Clear productIdAlreadyAddedToCart in state and localStorage
+      setProductIdAlreadyAddedToCart([]);
+      localStorage.removeItem("productIds"); // Remove the product IDs from localStorage
       toast.success("All Cart Deleted successfully", {
         duration: 5000,
         position: window.innerWidth < 768 ? "top-center" : "right-top",
@@ -133,8 +149,6 @@ localStorage.removeItem("productIds");
 
   // console.log(cart);
 
-  
-
   return (
     <>
       <Helmet>
@@ -143,7 +157,7 @@ localStorage.removeItem("productIds");
       <h2 className="text-4xl font-bold text-green-600 flex items-center justify-center pb-2 2xl:mt-28 ">
         Shopping Cart
       </h2>
-      {cart?.products.length === 0 ? (
+      {cart?.products?.length === 0 ? (
         <div
           id="alert-border-3"
           className="flex items-center p-6 mt-5   mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800"

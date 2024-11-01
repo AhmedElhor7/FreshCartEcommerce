@@ -9,6 +9,8 @@ import { BrandContext } from "../../Context/BrandContext";
 
 
 export default function Brands() {
+  const [loadingBrands, setLoadingBrands] = useState(true); // Added loading state
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState(null); // State for selected brand data
 
@@ -20,16 +22,25 @@ export default function Brands() {
   const { getAllBrands } = useContext(BrandContext);
   const [allBrands, setAllBrands] = useState();
 
-  async function callAllBrands() {
-    let response = await getAllBrands();
-    if (response.statusText === "OK") {
-      setAllBrands(response.data.data);
-    }
-  }
+
 
   useEffect(() => {
     callAllBrands();
   }, []);
+
+    async function callAllBrands() {
+      setLoadingBrands(true);
+      try {
+        let response = await getAllBrands();
+        if (response.statusText === "OK") {
+          setAllBrands(response.data.data);
+        }
+      } finally {
+        setLoadingBrands(false);
+      }
+    }
+
+
 
   return (
     <>

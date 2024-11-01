@@ -178,7 +178,7 @@ export default function CartContextProvider(props) {
 
     
 
-  if (isLoading || userOrdersLoading  ) {
+  if (isLoading || userOrdersLoading) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
         <RingLoader color="green" size={150} />
